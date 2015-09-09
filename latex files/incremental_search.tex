@@ -12,29 +12,27 @@ for a given non-linear ecuation (and linears too).
 
 \begin{algorithm}[H]
 	\SetAlgoLined
-	\KwData{x_0, delta, iterations}
+	\KwData{$x_0$, delta, iterations}
 	\eIf{$y=0$}{
 		print("x_0\ is\ a\ root")\;
-	}{
-		x_1 = x_0 + delta\;
-		y_1 = f( x_1 )\;
+		$x_1 = x_0 + delta\ $;
+		$y_1 = f( x_1 )$\;
 		counter = 1 \;
 		\While{$y_0 * y_1 > 0\ and\ y_1!=0\ and\ counter <= iter\ $}
 		{
-			x_0=x_1\;
-			y_0=y_1\;
-			x_1=x_0+delta\;
-			y_1=f(x_1)\;
-			counter++\;
+			$x_0=x_1\ ;$
+			$y_0=y_1\;$
+			$x_1=x_0+delta\;$
+			$y_1=f(x_1)\;$
+			$counter++\;$
 		}
 		\eIf{$y_1 = 0$}{
-			print("x_1\ is\ a\ root")\;
+			print($\textit{"x_1\ is\ a\ root"})$\;
 		}
 		{
 			\eIf{$y_0 * y_1 < 0$}{
 				print("There's\ a\ root\ between\ x_0\ and\ x_1")\;
-			}
-			{
+			}{			{
 				print("Fail")\;
 			}
 		}
