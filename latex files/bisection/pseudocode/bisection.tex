@@ -29,7 +29,7 @@
 	\ElsIf{$Y_s=0$}
 		\State $\textit{"$X_s$ is a root"}$ 
 	\Else
-		\State $\frac{X_m=(X_i+X_s)}{2}$
+		\State $X_m=\frac{(X_i+X_s)}{2}$
 		\State $Y_m=f(X_m)$
 		\State $\textit{Error\ = tol *2}$ 
 		\State $Cont=1\ \textit{//Because an $X_m$ was already compute}$
@@ -42,7 +42,7 @@
 				\State $Y_i=Y_m$
 			\EndIf
 				\State $Aux=X_m$
-				\State $\frac{X_m=(X_i+X_s)}{2}$
+				\State $X_m=\frac{(X_i+X_s)}{2}$
 				\State $err= \|X_m-Aux \| $
 				\State $Cont=Cont+1$
 		\EndWhile
@@ -51,7 +51,7 @@
 		\ElsIf{$error<tol$}
 			\State $\textit{$X_m$ is a root with an error of\ } \textbf{error}$ 
 		\ElsIf{$Cont>iter$}
-			\State $"We have ran out of iterations"$
+			\State $\textit{"We have ran out of iterations"}$
 		\EndIf
 	\EndIf
 \EndProcedure
