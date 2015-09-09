@@ -23,64 +23,52 @@
   title=biyection.cc
 }
 
-\title{Biyection code in C++}
+\title{Incremental-search code in C++}
 \begin{document}
 \maketitle
-\begin{lstlisting}[language=C++, caption=Biyection algorithm in C++]{Name=biyection.cc}
+\begin{lstlisting}[language=C++, caption=Incremental-search algorithm in c++]{Name=biyection.cc}
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-long double f(long double x);
+long double f(long double x){
+  long double y= sin(x);
+  return y;
+  
+}
 
 int main(){
-  cout << "Give me a range you know there's a root for sin(x), 
-then tolerance, and then iterations" << endl;
-  long double xi=0,xs=0,tol=0,iter=0,yi=0,ys=0;
-  yi = f(xi);
-  ys = f(xs);
-  cin >> xi >> xs >> tol >> iter;
-  if(yi*ys==0){
-    cout << "Roots are equals" << endl;
-    return 0;
-  }else if(yi==0){
-    cout << xi << " is a root" << endl;
-    return 0;
-  }else if(ys==0){
-    cout << xs << " is a root" << endl;
-    return 0;
+  cout.precision(30);
+  cout << "Wirte x0, delta and iterations 
+    separated by a space" << endl;
+  long double y1,x1,x0,delta,iter,y0;
+  cin >> x0 >> delta >> iter;
+  y0 = f(x0);
+  if (y0==0){
+    cout << "x0 is a root" << endl;
   }else{
-    long double xm = (xi+xs) / 2;
-    long double ym = f(xm);
-    long double error = tol * 2;
+    x1 = x0 + delta;
+    y1 = f(x1);
     long double cont = 1;
-    while(ym!=0 and error>tol and cont <= iter){
-      if(ym*yi == 0){
-	xs = xm;
-	ys = ym;
-      }else{
-	xi = xm;
-	yi = ym;
-      }
-      long double aux = xm;
-      xm = (xi + xs) / 2;
-      error = abs(xm-aux);
+    while(y0*y1>0 and y1!=0 and cont <= iter){
+      x0 = x1;
+      y0 = y1;
+      x1 = x0 + delta;
+      y1 = f(x1);
       cont++;
     }
-    if(ym==0){
-      cout << xm << " is a root" << endl;
-      return 0;
-    }else if(error<tol){
-      cout << xm << " is a root. Error=" << error << endl;
-    }else if(cont>iter){
-      cout << "iterations over. root not found" << endl;
+    if(y1==0){
+      cout << x1 << " is a root" << endl;
+    }else{
+      if(y0 * y1 < 0){
+	cout << "There's a root between "<< x0 
+          << " and " << x1 << endl;
+      }else{
+	cout << "FAIL!" << endl;
+      }
     }
   }
   return 0;
-}
-
-long double f(long double x){
-  return sin(x);
 }
 
 \end{lstlisting}
