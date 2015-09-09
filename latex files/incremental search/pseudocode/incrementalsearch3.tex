@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[]{algpseudocode}
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+\begin{document}
+\begin{algorithm}
+\caption{Incremental Search}\label{numerical methods}
+\begin{algorithmic}[1]	
+	\Procedure{IncrementalSearch}{}
+	\State $\textit{$x_0$} $
+	\State $\textit{delta}$
+	\State $\textit{Iterations}$
+		\If {$i > \textit{y=0}$}
+			\State $x_1 = x_0 + \Delta y_1 = f(x_1)$
+			\State $\textit{counter}=x_1$
+				\While{$y_0*y_1>0\ \&\ y_1!=0$ and counter $\leq$ iter}
+					\State  $x_0=x_1$\;
+					\State	$y_0=y_1$\;
+					\State	$x_1=x_0+delta$\;
+					\State	$y_1=f(x_1)$\;
+					\State	$counter++$\;
+				\EndWhile
+				\If{$y_1 = 0$}
+					\State{$"X_1\ \textit{is a root}"$}
+				\ElsIf{$y_0*y:1<0$}
+						\State{$\textit{"There's a root between $x_0$\ and $x_1$"}$}
+					\Else
+						\State $\textit{Fail}$
+				\EndIf
+		\EndIf
+	\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\end{document} 
