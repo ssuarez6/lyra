@@ -4,3 +4,5 @@
 ![The incremental search method pseudocode](https://github.com/ssuarez6/lyra/blob/master/screenshots/incremental_search.png)
 ### Bisection Method algorithm
 ![The bisection method pseudocode](https://github.com/ssuarez6/lyra/blob/master/screenshots/bisection_pseudocode.png)
+### The false position method algorithm
+![The false position method pseudocode]()
