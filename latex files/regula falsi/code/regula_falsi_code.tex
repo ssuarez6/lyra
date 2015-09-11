@@ -1,3 +1,32 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
+\author{Andrés Mateo Otálvaro, Santiago Suárez Pérez, Daniel Ermilson Velásquez}
+\definecolor{agreen}{RGB}{0,100,0}
+\definecolor{agray}{rgb}{0.5,0.5,0.5}
+\definecolor{amauve}{rgb}{0.58,0,0.82}
+\definecolor{orange}{RGB}{255,140,0}
+\lstset{
+  backgroundcolor=\color{white},
+  commentstyle=\itshape\color{purple},
+  keywordstyle=\bfseries\color{agreen},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  tabsize=4,
+  numbers=left,
+  stepnumber=1,
+  firstnumber=1,
+  numberfirstline=true,
+  showstringspaces=false,
+  frame=lrb
+  title=biyection.cc
+}
+
+\title{Code in C++ for the Rgula falsi method}
+\begin{document}
+\maketitle
+\begin{lstlisting}[language=C++, caption=Regula Falsi method in C++]{Name=regula_falsi.cc}
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -5,7 +34,9 @@ using namespace std;
 long double f(long double x);
 
 int main(){
-  cout << "Give me a range you know there's a root for sin(x), then tolerance, and then iterations" << endl;
+  cout << "Give me a range you know there's a 
+    root for sin(x), then tolerance, 
+    and then iterations" << endl;
   long double xi=0,xs=0,tol=0,iter=0,yi=0,ys=0;
   yi = f(xi);
   ys = f(xs);
@@ -33,7 +64,7 @@ int main(){
 	yi = ym;
       }
       long double aux = xm;
-      xm = (xi + xs) / 2;
+      xm = (yi*xs - xi*ys) / (yi-ys);
       error = abs(xm-aux);
       cont++;
     }
@@ -52,3 +83,6 @@ int main(){
 long double f(long double x){
   return sin(x);
 }
+
+\end{lstlisting}
+\end{document}

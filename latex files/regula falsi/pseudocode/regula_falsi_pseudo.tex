@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[]{algpseudocode}
+\usepackage[utf8]{inputenc}
+\title{Bisection Method}
+\author{Andrés Mateo Otálvaro, Santiago Suarez Perez,Daniel Ermilson Velásquez}
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+\begin{document}
+\maketitle
+\begin{algorithm}
+\caption{Bisection}\label{numerical methods}
+\begin{algorithmic}[1]
+\Procedure{Bisection}{}
+\State $\textit{$X_i$}$\;
+\State $\textit{$X_s$}$\;
+\State $\textit{tol}$\;
+\State $\textit{iter}$\;
+\State $Y_i=f(X_i)$\;
+\State$Y_s=f(X_s)$\;
+	\If{$Y_i * Y_s > 0$}
+		\State $\textit{"The roots are not equal"}$
+	\ElsIf{$Y_i=0$}
+		\State $\textit{"$X_i$ is a root"}$
+	
+	\ElsIf{$Y_s=0$}
+		\State $\textit{"$X_s$ is a root"}$ 
+	\Else
+		\State $X_m=\frac{(Y_i*X_s - Y_s*X_i)}{(Y_i - Y_s)}$
+		\State $Y_m=f(X_m)$
+		\State $\textit{Error\ = tol *2}$ 
+		\State $Cont=1\ \textit{//Because an $X_m$ was already compute}$
+		\While{$Y_m \neq 0\ \&\ \textit{error}>tol\ \&\ cont \leq iter $}
+			\If{$Y_m*Y_i < 0$}
+				\State $X_s=X_m$
+				\State $Y_s=Y_m$
+			\Else 
+				\State $X_i=X_n$
+				\State $Y_i=Y_m$
+			\EndIf
+				\State $Aux=X_m$
+				\State $X_m=\frac{(X_i+X_s)}{2}$
+				\State $err= \|X_m-Aux \| $
+				\State $Cont=Cont+1$
+		\EndWhile
+		\If{$Y_m=0$}
+			\State $\textit{"$X_m$ is a root"}$
+		\ElsIf{$error<tol$}
+			\State $\textit{$X_m$ is a root with an error of\ } \textbf{error}$ 
+		\ElsIf{$Cont>iter$}
+			\State $\textit{"We have ran out of iterations"}$
+		\EndIf
+	\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\end{document}
