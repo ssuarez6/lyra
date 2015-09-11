@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1441809675 "bisection.tex" "bisection.pdf" "bisection" 1441809676
+["pdflatex"] 1441987019 "bisection.tex" "bisection.pdf" "bisection" 1441987019
   "/usr/share/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty" 1428279262 26750 ce139c05a983e19ddca355b43e29c395 ""
   "/usr/share/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty" 1428279262 3457 d9077efe6b74c5a094199256af8d7d9a ""
   "/usr/share/texmf-dist/tex/latex/algorithms/algorithm.sty" 1428279262 3249 15763257e50278eef5db1952ccde229c ""
@@ -17,9 +17,9 @@
   "/usr/share/texmf-dist/tex/latex/base/t1enc.dfu" 1428273609 7405 1ec6ceee22fd8064f4a510ce9c02c6f9 ""
   "/usr/share/texmf-dist/tex/latex/base/utf8.def" 1428273609 6275 d5cccabec4a8548b643c15bcf3741c28 ""
   "/usr/share/texmf-dist/tex/latex/float/float.sty" 1428273609 6749 16d2656a1984957e674b149555f1ea1d ""
-  "bisection.aux" 1441809676 134 985019f15ce745b22ad93d332ac76edf ""
-  "bisection.tex" 1441809675 1558 36f01a0cee4a4cd7ddd32215b912ae48 ""
+  "bisection.aux" 1441987019 134 985019f15ce745b22ad93d332ac76edf ""
+  "bisection.tex" 1441987019 1555 df0c1b5c2daf497b3e61112dcacd46dc ""
   (generated)
   "bisection.log"
-  "bisection.pdf"
   "bisection.aux"
+  "bisection.pdf"
