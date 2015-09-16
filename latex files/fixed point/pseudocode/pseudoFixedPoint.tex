@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[]{algpseudocode}
+\usepackage[utf8]{inputenc}
+\title{Fixed Point}
+\author{Andrés Mateo Otálvaro, Santiago Suárez Pérez,Daniel Ermilson Velásquez}
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+\begin{document}
+\maketitle
+\begin{algorithm}
+\caption{Fixed Point}\label{numerical methods}
+\begin{algorithmic}[1]
+\Procedure{Fixed Point}{}
+	\State $\textit{Tolerancia,$X_a$,niteraciones}$
+	\State $F_x = F(X_a)$
+	\State $\textit{Contador = 0}$
+	\State $\textit{error = tolerancia +1} $
+		\While{$f(x)\neq0\ \&\ \textit{error} > \textit{tolerancia}\ \&\ \textit{contador} < \textit{niteraciones} $}
+			\State $X_n=g(X_a)$
+			\State $F(x)=F(X_n)$
+			\State $\textit{error}=|X_n-X_a|$
+			\State $X_a=X_n$
+			\State $\textit{Contador++}$
+		\EndWhile
+		\If{$f_x=0$}
+			\State $X_a \textit{is a root}$
+		\ElsIf{$\textit{error}<\textit{tolerancia}$}
+			\State $X_0 \textit{"se aproxima con una tolerancia" + tolerancia}$
+		\Else
+			\State $\textit{"FAIL despues de"+ niteraciones +"iteraciones"}$
+		\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\end{document}
