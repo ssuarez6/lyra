@@ -5,6 +5,12 @@ using namespace std;
 long double f(long double x);
 
 int main(){
+  bool abs_error; char c;
+ question: cout << "Do you want to handle absolute error(a), or relative error(r)?" << endl;
+  cin >> c;
+  if(c!='r' and c!='a') goto question;
+  if(c=='r') abs_error=false;
+  if(c=='a') abs_error=true;
   cout << "Give me a range you know there's a root for sin(x), then tolerance, and then iterations" << endl;
   long double xi=0,xs=0,tol=0,iter=0,yi=0,ys=0;
   yi = f(xi);
@@ -34,7 +40,7 @@ int main(){
       }
       long double aux = xm;
       xm = (yi*xs - xi*ys) / (yi-ys);
-      error = abs(xm-aux);
+      error = abs_error ? abs(xm-aux) : abs((xm-aux)/xm);
       cont++;
     }
     if(ym==0){

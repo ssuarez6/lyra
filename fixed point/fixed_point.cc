@@ -4,6 +4,13 @@ using namespace std;
 long double f(long double x);
 long double g(long double x);//defining side-efects
 int main(void){
+  bool abs_error;
+  char c;
+ question: cout << "Do you want to handle absolute error(a), or relative error(r)?" << endl;
+  cin >> c;
+  if(c!='r' and c!='a') goto question;
+  if(c=='r') abs_error = false;
+  if(c=='a') abs_error = true;
   cout << "Type de initial value, " 
     << "then the tolerance and then iterations." << 
     " All of them separated by a space" << endl;
@@ -15,7 +22,7 @@ int main(void){
   while(y!=0 and error>tol and cont < iter){
     xn = g(x0);
     y = f(xn);
-    error = abs(xn - x0);
+    error = abs_error ? abs(xn - x0) : abs((xn-xo)/xn);
     x0 = xn;
     ++cont;
   }

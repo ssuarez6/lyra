@@ -9,6 +9,10 @@ long double f(long double x){
 }
 
 int main(){
+  cin >> c;
+  if(c!='r' and c!='a') goto question;
+  if(c=='r') abs_error = false;
+  if(c=='a') abs_error = true;
   cout.precision(30);
   cout << "Wirte x0, delta and iterations separated by a space" << endl;
   long double y1,x1,x0,delta,iter,y0;
