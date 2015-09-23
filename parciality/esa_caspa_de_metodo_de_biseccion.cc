@@ -18,9 +18,9 @@ int main() {
     "Give me a range, that is, two x values you know there's a root for f(x), then tolerance, and then iterations" <<
     endl;
     long double xi = 0, xs = 0, tol = 0, iter = 0, yi = 0, ys = 0;
+    cin >> xi >> xs >> tol >> iter;
     yi = f->evaluar_en(xi);
     ys = f->evaluar_en(xs);
-    cin >> xi >> xs >> tol >> iter;
     if (yi * ys == 0) {
         cout << "Roots are equals" << endl;
         return 0;
@@ -36,7 +36,7 @@ int main() {
         long double error = tol * 2;
         long double cont = 1;
         while (ym != 0 and error > tol and cont <= iter) {
-            if (ym * yi == 0) {
+            if (ym * yi < 0) {
                 xs = xm;
                 ys = ym;
             } else {
@@ -46,6 +46,8 @@ int main() {
             long double aux = xm;
             xm = (xi + xs) / 2;
             ym = f->evaluar_en(xm);
+            cout << "xi= " << xi << " xs=" << xs
+              << "xm=" << xm << " f(xm)=" << ym << endl;
             error = abs_error ? abs(xm - aux) : abs((xm - aux) / xm);
             cont++;
         }
@@ -53,7 +55,7 @@ int main() {
             cout << xm << " is a root" << endl;
             return 0;
         } else if (error < tol) {
-            cout << xm << " is a root. Error=" << error << endl;
+            cout << xm << " is a root. Error=" << error << " iterations= " << cont << endl;
         } else if (cont > iter) {
             cout << "iterations over. root not found" << endl;
         }

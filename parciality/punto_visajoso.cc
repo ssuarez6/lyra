@@ -28,10 +28,11 @@ int main(void) {
     long double error = tol + 1;
     long long cont = 0;
     while (y != 0 and error > tol and cont < iter) {
-        xn = g->evaluar_en(x0);
-        y = f->evaluar_en(xn);
+        xn = g ->  evaluar_en(x0);
+        y  = f ->  evaluar_en(xn);
         error = abs_error ? abs(xn - x0) : abs((xn - x0) / xn);
         x0 = xn;
+        cout << "X_0 :" << "||" << x0 << "||" << "X_n :" << xn  << "|| " << "\n";
         ++cont;
     }
     if (y == 0) {
