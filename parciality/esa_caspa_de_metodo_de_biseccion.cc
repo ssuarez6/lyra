@@ -33,10 +33,10 @@ int main() {
     } else {
         long double xm = (xi + xs) / 2;
         long double ym = f->evaluar_en(xm);
-        long double error = tol * 2;
+        long double error = tol+1;
         long double cont = 1;
         while (ym != 0 and error > tol and cont <= iter) {
-            if (ym * yi == 0) {
+            if (ym * yi < 0) {
                 xs = xm;
                 ys = ym;
             } else {
