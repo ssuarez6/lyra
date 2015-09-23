@@ -20,5 +20,6 @@ void parser_panguana::asignar_expresion(string panguana_de_expr) {
 
 long double parser_panguana::evaluar_en(long double param) {
     x = param;
+    //cout << expression.value() << endl; //uncomment for debug
     return expression.value();
 }
