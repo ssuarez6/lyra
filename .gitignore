@@ -3,3 +3,4 @@
 *.aux
 CMakeLists.txt
 .idea/
+*.pyc
