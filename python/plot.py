@@ -1,6 +1,7 @@
 import re
 import numpy as np
 import matplotlib.pyplot as plt
+import pylab
 
 replacements = {
     'sin' : 'np.sin',
@@ -45,10 +46,11 @@ def string2func(string):
 
 def graficar(f):
     func = string2func(f)
-    x = np.linspace(-10, 10, 250)
-    plt.plot(x, func(x))
-    plt.xlim(-10, 10)
-    plt.show()
+    x = np.arange(-300,300,0.0001)
+    pylab.plot(x, func(x))
+    plt.xlim(-10,10)
+    pylab.ylim(-10,10)
+    pylab.show()
 
 
 if __name__ == '__main__':
