@@ -26,6 +26,8 @@ else:
     ym = 1
     xm = (xi+xf)/2
     while(ym!=0 and error>tol and con<=int(iter)):
+        if(con>1):
+            xm = nxm
         ym = float(parser.eval(fx,xm))
         xxi = xi
         xxf = xf
@@ -42,7 +44,6 @@ else:
             error = abs(nxm-xm)
         v = (con,xxi,xxf,xm,ym,error)
         rows.append(v)
-        xm = nxm
         con += 1
     t = Table(rows=rows, names=('iter', 'xi', 'xf', 'xm','f(xm)','error'))
     print(t)

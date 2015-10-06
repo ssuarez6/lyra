@@ -50,6 +50,8 @@ def graficar(f):
     pylab.plot(x, func(x))
     plt.xlim(-10,10)
     pylab.ylim(-10,10)
+    pylab.axvline(0,color='black')
+    pylab.axhline(0,color='black')
     pylab.show()
 
 
