@@ -50,6 +50,7 @@ def graficar(f):
     pylab.plot(x, func(x))
     plt.xlim(-10,10)
     pylab.ylim(-10,10)
+    pylab.grid(True)
     pylab.show()
 
 
