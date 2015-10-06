@@ -12,14 +12,15 @@ function_evaluated=float(parser.eval(function,xaproximmate))
 functiong_evaluated=float(parser.eval(functiong,xaproximmate))
 error=tolerance+1
 contador=(0)
-while function_evaluated!=0 and error > tolerance and contador < iterations :
-            x_n = functiong
-            x_n = float(parser.eval(x_n,functiong_evaluated))
-            xaproximmate = x_n
-            error        = abs(x_n-functiong_evaluated)
-            contador     = contador+1
-            functiong    = x_n
 
+while function_evaluated!=0 and error > tolerance and contador < iterations :
+            x_n          = functiong_evaluated
+            x_n_evaluated= float(parser.eval(functiong,x_n))
+            f_x_n        = float(parser.eval(function, functiong_evaluated))
+            xaproximmate = x_n
+            error        = abs(x_n_evaluated-x_n)
+            contador     = contador+1
+            functiong_evaluated    = x_n_evaluated
 print iterations
 if function_evaluated==0:
     print "X_a es raiz"
