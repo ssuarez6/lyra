@@ -1,7 +1,7 @@
 from astropy.table import Table
 import parser
 
-print "You're running the bisection method"
+print "You're running the regula falsi method"
 fx = raw_input('Enter a function: ')
 xi = raw_input('Enter the lower limit ')
 xi = float(xi)
@@ -24,7 +24,7 @@ else:
     error = tol*2
     con = 1
     ym = 1
-    xm = (xi+xf)/2
+    xm = xi-((yi*(xi-xf))/(yi-yf))
     while(ym!=0 and error>tol and con<=int(iter)):
         ym = float(parser.eval(fx,xm))
         xxi = xi
@@ -35,7 +35,7 @@ else:
         else:
             xf = xm
             yf = ym
-        nxm = float((xi+xf)/2)
+        nxm = xi-((yi*(xi-xf))/(yi-yf))
         if(e==1):
             error = abs((nxm-xm)/nxm)
         else:
