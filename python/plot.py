@@ -13,6 +13,7 @@ replacements = {
     'arctan': 'np.arctan',
     'arcsin': 'np.arcsin',
     'arccos': 'np.arccos',
+    'log': 'np.log'
 }
 
 allowed_words = [
@@ -25,6 +26,7 @@ allowed_words = [
     'arctan',
     'arcsin',
     'arccos',
+    'log'
 ]
 
 def string2func(string):
