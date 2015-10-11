@@ -3,10 +3,10 @@ __author__ = 'parzival'
 import parser
 import plot
 from astropy.table import Table
-tolerance=float(input("Type the tolerance "))
-xaproximmate=float(input("Type the initial approximation "))
-iterations=(input("Type the number of iterations "))
-function=raw_input("Type the f function ")
+tolerance=float(input("Type the tolerance \n"))
+xaproximmate=float(input("Type the initial approximation \n"))
+iterations=(input("Type the number of iterations \n "))
+function=raw_input("Type the f function \n ")
 functiong=raw_input("Type the g function \n")
 function_evaluated=float(parser.eval(function,xaproximmate))
 functiong_evaluated=float(parser.eval(functiong,xaproximmate))

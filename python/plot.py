@@ -13,7 +13,8 @@ replacements = {
     'arctan': 'np.arctan',
     'arcsin': 'np.arcsin',
     'arccos': 'np.arccos',
-    'log': 'np.log'
+    'ln': 'np.log',
+    'log':'np.log10'
 }
 
 allowed_words = [
