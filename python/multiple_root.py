@@ -13,6 +13,7 @@ iterations = int(raw_input("\nType the maximum iterations\n>"))
 y = parser.eval(fn, x0)
 error = tol + 1
 cont = 0
+rows[]
 s = "|\titers\t|\t\tXn\t|\t\tf(Xn)\t\t|\t\tError\t\t|\n"
 while y != 0 and error > tol and cont < iter:
     y = parser.eval(fn, x0)
@@ -25,8 +26,12 @@ while y != 0 and error > tol and cont < iter:
         error = abs((xn-x0)/xn)
     x0 = xn
     s = s + "|\t"+str(cont)+"\t|\t"+str(xn)+"\t|\t"+str(y)+"\t\t|\t"+str(error)+"\t|\n"
+    v = (cont,xn,y,error)
+    rows.append(v)
     cont = cont+1
-
+t = Table(rows=rows, names=('Contador', 'xn', 'y', 'error'))
+print(t)
+print("")
 if y is 0:
     print x0,"is a root"
 elif error <= tol:

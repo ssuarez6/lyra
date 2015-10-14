@@ -1,5 +1,5 @@
 from astropy.table import Table
-import parser
+import parser, plot
 
 print "You're running the bisection method"
 fx = raw_input('Enter a function: ')
@@ -48,6 +48,7 @@ else:
     t = Table(rows=rows, names=('iter', 'xi', 'xf', 'xm','f(xm)','error'))
     print(t)
     print("")
+    plot.graficar(fx)
     if(ym == 0):
         print str(xm)+" is a root with a error of " + str(error)
     elif(error<tol):
