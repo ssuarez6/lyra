@@ -15,13 +15,15 @@ def aumented_mat(A,b):
 
 def pivot(Matrix):
 #    p = 'x'
-    p = raw_input("Select your pivot technique:\n|:partial(p)\n|:total(t)\n|:escaloned(e)\n===>")
+    p = raw_input("Select your pivot technique:\n|:partial(p)\n|:total(t)\n|:escaloned(e)\n|:don't pivote(n)\n===>")
     if p == 'p':
         return partial_pivot(Matrix)
     elif p == 't':
         return total_pivot(Matrix)
     elif p == 'e':
         return escaloned_pivot(Matrix)
+		elif p == 'n':
+				return Matrix
     else:
         pivot(Matrix)
 
@@ -71,11 +73,15 @@ def gauss_elimin(Ab):
     return Ab
 
 def regresive_sust(Ab):
-    x = []
+	x = []
+	for i in range(len(Ab)):
+		x.append(0)		
     for i in range(len(Ab)-1, -1, -1):
         _sum = 0
         for p in range(i+1, len(Ab)):
-            _sum += 
+            _sum += Ab[i][p]*x[p]
+		x[i] = (Ab[i][n-1] - sum)/Ab[i][i]
+		return x
 
 
 cols = input("Type the number of x's \n-->")
@@ -84,3 +90,6 @@ A = readMat(cols, rows)
 print "\n..::..::..::..::..::..::..::..::..\nNow Write the solution column\n"
 b = readMat(1, rows)
 A = pivot(A)
+Ab = aumented_mat(A,b)
+Ab_p = gauss_elimin(Ab)
+X = regresive_sust(Ab_p)
