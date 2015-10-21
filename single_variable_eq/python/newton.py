@@ -3,11 +3,11 @@ import parser
 import plot
 from astropy.table import Table
 tolerance=float(raw_input("Type the tolerance \n"))
-xapproximate= float(raw_input("Type the initial approximation \n "))
-iterations  = input("Type the iterations \n ")
-function            =raw_input("Type the function \n ")
-derivative_function =raw_input("Type the derivative of the function \n")
-function_evaluated  = float(parser.eval(function,xapproximate))
+xapproximate=float(raw_input("Type the initial approximation \n "))
+iterations=input("Type the iterations \n ")
+function=raw_input("Type the function \n ")
+derivative_function=raw_input("Type the derivative of the function \n")
+function_evaluated=float(parser.eval(function,xapproximate))
 derivative_evaluated= float(parser.eval(derivative_function,xapproximate))
 counter=0
 error=tolerance+1
