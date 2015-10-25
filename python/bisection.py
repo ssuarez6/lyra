@@ -55,5 +55,5 @@ else:
         print str(xm)+" is a root with a error of " + str(error)
         print "The method has stoped because the error is < tolerance"
     else:
-        print "the method has exceeded the number maximum of iterations"
+        print "The method has exceeded the number maximum of iterations"
 

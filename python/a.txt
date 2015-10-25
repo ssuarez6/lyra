@@ -1,0 +1,8 @@
+log(x^2+1)-10*sin(x)+2
+log(x^2+1)-10*sin(x)+x+2
+(2*x)/(x^2+1)-10*cos(x)
+
+
+
+Hacer el formato para f y para el error -> #.#e-#
+La X sí debe tener todas las cifras.

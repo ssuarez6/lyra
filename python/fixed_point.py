@@ -1,5 +1,3 @@
-# coding=utf-8
-__author__ = 'parzival'
 import parser
 import plot
 from astropy.table import Table
@@ -19,14 +17,14 @@ while function_evaluated!=0 and error > tolerance and contador < iterations :
             x_n_evaluated= float(parser.eval(functiong,x_n))
             xaproximmate = x_n
             error        = abs(x_n_evaluated-x_n)
+            print function
             f_x_n_evaluated= float(parser.eval(function,x_n_evaluated))
             v=(contador,x_n,f_x_n_evaluated,error)
             rows.append(v)
             contador     = contador+1
             functiong_evaluated    = x_n_evaluated
-            t = Table(rows=rows, names=('iter', 'x_n', 'f_x_n','error'))
 
-
+t = Table(rows=rows, names=('iter', 'x_n', 'f_x_n','error'))
 if function_evaluated==0:
     print "X_a es raiz"
 elif error < tolerance:

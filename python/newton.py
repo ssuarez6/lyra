@@ -1,4 +1,3 @@
-__author__ = 'parzival'
 import parser
 import plot
 from astropy.table import Table
@@ -23,7 +22,7 @@ while error>tolerance and function_evaluated!=0 and derivative_function!=0 and c
     v=(counter,x_n,f_n,d_f_n,error)
     rows.append(v)
     counter=counter+1
-    t = Table(rows=rows, names=('iter', 'x_n', 'f_x_n','f_d_x_n','error'))
+t = Table(rows=rows, names=('iter', 'x_n', 'f_x_n','f_d_x_n','error'))
 if function_evaluated==0:
     print str(xapproximate)+"is a root"
 elif error<tolerance:
