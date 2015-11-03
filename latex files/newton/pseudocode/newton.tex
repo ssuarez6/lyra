@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[]{algpseudocode}
+\usepackage[utf8]{inputenc}
+\title{Newton}
+\author{Andrés Mateo Otálvaro, Santiago Suárez Pérez,Daniel Ermilson Velásquez}
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+\begin{document}
+\maketitle
+\begin{algorithm}
+\caption{Newton}\label{numerical methods}
+\begin{algorithmic}[1]
+\Procedure{Newton}{}
+	\State $\textit{Tolerancia,$X_a$,iterations}$
+	\State $F_x = F(X_0)$
+	\State $\delta f(x)=f'(x_0)$
+	\State $\textit{Counter = 0}$
+	\State $\textit{error = tolerance +1} $
+		\While{$f(x)\neq0\ \&\ \textit{error} > \textit{tolerancia}\ \&\ \textit{counter} < \textit{iterations} $}
+			\State $X_1=x_0-\frac{f(x)}{\delta f(X)}$
+			\State $F(x)=F(X_1)$
+			\State $\textit{error}=|X_n-X_0|$
+			\State $X_0=X_1$
+			\State $\textit{Counter++}$
+		\EndWhile
+		\If{$f_x=0$}
+			\State $X_a \textit{is a root}$
+		\ElsIf{$\textit{error}<\textit{tolerance}$}
+			\State $X_0 \textit{"It approximates with a tolerance + tolerance}$
+		\Else
+			\State $\textit{"FAIL after"+ niteraciones +"iterations"}$
+		\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\end{document}

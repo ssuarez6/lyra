@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[]{algpseudocode}
+\usepackage[utf8]{inputenc}
+\title{Secant}
+\author{Andrés Mateo Otálvaro, Santiago Suárez Pérez,Daniel Ermilson Velásquez}
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+\begin{document}
+\maketitle
+\begin{algorithm}
+\caption{Secant}\label{numerical methods}
+\begin{algorithmic}[1]
+\Procedure{Secant}{}
+	\State $tol,x_0,x_1,niter$
+	\State $fx_0=f(x_0)$
+	\If{$fx_0=0$}
+		\State $X_0\textit{is a root}$
+	\Else
+		\State{$fx_1=f(x_1)$}
+		\State{$cont=0$}
+		\State{$error=tol+1$}
+		\State{$den=fx_1-fx_0$}
+		\While{$error>tol$ and $fx_1\neq0$ and $den\neq0$ and $cont < niter$}
+			\State{$x_2=x1-\frac{fx_1*(x_1-x_0)}{den}$}
+			\State{$error=|x_2-x_1|$}
+			\State{$x_0=x_1$}
+			\State{$fx_0=fx_1$}
+			\State{$x1=x2$}
+			\State{ $f_x1=f(x_1)$}
+			\State{$den=f_x1-f_x0$}
+			\State{$cont=cont+1$}
+		\EndWhile
+		\If{$f_x1=0$}
+			\State{$x_1 \textit{is a root}$}
+		\ElsIf{$error<tol$}
+			\State{$X_1\textit{is an approximation with a tolerance}=tol$}
+		\ElsIf{$den=0$}
+			\State{$\textit{There is a possible multiple root}$}
+		\Else
+			\State{$\textit{Fail after niter iterations}$}
+		\EndIf
+	\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\end{document}

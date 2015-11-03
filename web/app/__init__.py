@@ -1,7 +1,6 @@
-__author__ = 'andressmateo'
-
 from flask import Flask
+from flask_restful import Api
 
 app = Flask(__name__)
-
-from app import views
+api = Api(app)
+from app import views, rest
