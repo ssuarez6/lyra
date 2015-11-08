@@ -46,10 +46,10 @@ def method(fx,xi,xf,tol,iter,e = 000):
         table = {'iter': con-1, 'xi' : xis, 'xf': xfs, 'ym':yms,'error':errors}
         if(ym == 0):
             return {'status': "SUCESS", 'message': str(xm)+" is a root with a error of " + str(error), 'xm' : xm,
-                    'error':error, 'iter':con-1, 'table':table, 'stopBy':'xm'}
+                    'error':error, 'table':table, 'stopBy':'xm'}
         elif(error<tol):
             return {'status': "SUCESS", 'message': str(xm)+" is a root with a error of " + str(error), 'xm' : xm,
-                    'error':error, 'iter':con-1, 'table':table, 'stopBy':'tol'}
+                    'error':error, 'table':table, 'stopBy':'tol'}
         else:
             return {'status': "SUCESS", 'message': str(xm)+" is a root with a error of " + str(error), 'xm' : xm,
-                    'error':error, 'iter':iter, 'table':table, 'stopBy':'iter'}
+                    'error':error, 'table':table, 'stopBy':'iter'}
