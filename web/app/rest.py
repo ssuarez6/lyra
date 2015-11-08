@@ -1,6 +1,7 @@
 from flask_restful import Resource, request
 from app import api
-from methods import bisection, regula_falsi, fixed_point, multiple_root, newton
+from methods import bisection, regula_falsi, fixed_point, \
+    multiple_root, newton, secant
 
 
 class Methods(Resource):
@@ -29,6 +30,9 @@ class Methods(Resource):
         elif(method=='newton'):
             fnx = request.form['fnx']
             r = newton.method(tol,xi,iter,fx,fnx,e)
+        elif(method=='secant'):
+            xf = request.form['xf']
+            r = secant.method(tol,xi,xf,iter,fx,e)
         else:
             return "The method is not valid"
         if(not r):
