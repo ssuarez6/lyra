@@ -1,58 +1,55 @@
-from astropy.table import Table
-import parser, plot
+from methods import eval
 
-print "You're running the regula falsi method"
-fx = raw_input('Enter a function: ')
-xi = raw_input('Enter the lower limit ')
-xi = float(xi)
-xf = raw_input('Enter the upper limit ')
-xf = float(xf)
-tol = raw_input('Enter the tolerence ')
-tol = float(tol)
-iter = raw_input('Enter the maximum number of iterations ')
-e = raw_input("If do you want to calculate the relative error write '1', else write anything ")
-yi = parser.eval(fx,xi)
-yf = parser.eval(fx,xf)
-rows = []
-if(yi*yf>0):
-    print "The interval is not valid"
-elif (yi==0):
-    print "The lower limit "+str(xi)+" is a root"
-elif (yf==0):
-    print "The lower limit "+str(xf)+" is a root"
-else:
-    error = tol*2
-    con = 1
-    ym = 1
-    xm = xi-((yi*(xi-xf))/(yi-yf))
-    while(ym!=0 and error>tol and con<=int(iter)):
-        ym = float(parser.eval(fx,xm))
-        xxi = xi
-        xxf = xf
-        if(ym*yi>0):
-            xi = xm
-            yi = ym
-        else:
-            xf = xm
-            yf = ym
-        nxm = xi-((yi*(xi-xf))/(yi-yf))
-        if(e==1):
-            error = abs((nxm-xm)/nxm)
-        else:
-            error = abs(nxm-xm)
-        v = (con,xxi,xxf,xm,ym,error)
-        rows.append(v)
-        xm = nxm
-        con += 1
-    t = Table(rows=rows, names=('iter', 'xi', 'xf', 'xm','f(xm)','error'))
-    print(t)
-    print("")
-    plot.graficar(fx)
-    if(ym == 0):
-        print str(xm)+" is a root with a error of " + str(error)
-    elif(error<tol):
-        print str(xm)+" is a root with a error of " + str(error)
-        print "The method has stoped because the error is < tolerance"
+def method(fx,xi,xf,tol,iter,e = 000):
+    xi = float(xi)
+    xf = float(xf)
+    tol = float(tol)
+    yi = eval(fx,xi)
+    yf = eval(fx,xf)
+    xis = []
+    xfs = []
+    xms = []
+    yms = []
+    errors = []
+    if(yi*yf>0):
+        return {'status': "FAIL", 'message': "The interval is not valid"}
+    elif (yi==0):
+        return {'status': "FAIL", 'message': "The lower limit "+str(xi)+" is a root"}
+    elif (yf==0):
+        return {'status': "FAIL", 'message': "The lower limit "+str(xf)+" is a root"}
     else:
-        print "the method has exceeded the number maximum of iterations"
-
+        error = tol*2
+        con = 1
+        ym = 1
+        xm = (xi+xf)/2
+        while(ym!=0 and error>tol and con<=int(iter)):
+            if(con>1):
+                xm = nxm
+            ym = float(eval(fx,xm))
+            xxi = xi
+            xxf = xf
+            if(ym*yi>0):
+                xi = xm
+            else:
+                xf = xm
+            nxm = xi-((yi*(xi-xf))/(yi-yf))
+            if(e==1):
+                error = abs((nxm-xm)/nxm)
+            else:
+                error = abs(nxm-xm)
+            xis.append(xxi)
+            xfs.append(xxf)
+            xms.append(xm)
+            yms.append(ym)
+            errors.append(error)
+            con += 1
+        table = {'iter': con-1, 'xi' : xis, 'xf': xfs, 'ym':yms,'error':errors}
+        if(ym == 0):
+            return {'status': "SUCESS", 'message': str(xm)+" is a root with a error of " + str(error), 'xm' : xm,
+                    'error':error, 'iter':con-1, 'table':table, 'stopBy':'xm'}
+        elif(error<tol):
+            return {'status': "SUCESS", 'message': str(xm)+" is a root with a error of " + str(error), 'xm' : xm,
+                    'error':error, 'iter':con-1, 'table':table, 'stopBy':'tol'}
+        else:
+            return {'status': "SUCESS", 'message': str(xm)+" is a root with a error of " + str(error), 'xm' : xm,
+                    'error':error, 'iter':iter, 'table':table, 'stopBy':'iter'}

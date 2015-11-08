@@ -1,6 +1,6 @@
 from methods import eval
 
-def bisection(fx,xi,xf,tol,iter,e = 000):
+def method(fx,xi,xf,tol,iter,e = 000):
     xi = float(xi)
     xf = float(xf)
     tol = float(tol)
@@ -11,7 +11,6 @@ def bisection(fx,xi,xf,tol,iter,e = 000):
     xms = []
     yms = []
     errors = []
-    iters = []
     if(yi*yf>0):
         return {'status': "FAIL", 'message': "The interval is not valid"}
     elif (yi==0):
@@ -31,23 +30,20 @@ def bisection(fx,xi,xf,tol,iter,e = 000):
             xxf = xf
             if(ym*yi>0):
                 xi = xm
-                #yi = ym
             else:
                 xf = xm
-                #yf = ym
             nxm = float((xi+xf)/2)
             if(e==1):
                 error = abs((nxm-xm)/nxm)
             else:
                 error = abs(nxm-xm)
-            iters.append(con)
             xis.append(xxi)
             xfs.append(xxf)
             xms.append(xm)
             yms.append(ym)
             errors.append(error)
             con += 1
-        table = {'iter': iters, 'xi' : xis, 'xf': xfs, 'ym':yms,'error':errors}
+        table = {'iter': con-1, 'xi' : xis, 'xf': xfs, 'ym':yms,'error':errors}
         if(ym == 0):
             return {'status': "SUCESS", 'message': str(xm)+" is a root with a error of " + str(error), 'xm' : xm,
                     'error':error, 'iter':con-1, 'table':table, 'stopBy':'xm'}
