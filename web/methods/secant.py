@@ -26,8 +26,7 @@ def method(tolerance,inferior_limit,superior_limit,iterations,function,e):
             xns.append(x_n)
             function1s.append(function_1)
             counter=counter+1
-        table = {'iter': counter-1, 'xi' : inferior_limit, 'xf': superior_limit, 'xn':xns,'error':errors}
-
+    table = {'iter': counter-1, 'xi' : inferior_limit, 'xf': superior_limit, 'xn':xns,'error':errors}
     if (function_1 == 0):
         return {'status': "SUCESS", 'message': str(superior_limit) + " is a root with a error of " + str(error),
                 'xn': x_n,

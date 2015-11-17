@@ -1,19 +1,25 @@
 from flask_restful import Resource, request
 from app import api
 from methods import bisection, regula_falsi, fixed_point, \
-    multiple_root, newton, secant
+    multiple_root, newton, secant, incremental_search
 
 
-class Methods(Resource):
+class RootMethods(Resource):
 
     def post(self):
         fx = request.form['fx']
-        tol= request.form['tol']
-        iter = request.form['iter']
         xi = request.form['xi']
-        e = request.form['e']
         method = request.form['method']
         r = None
+
+        if(method!='incremental'):
+            tol= request.form['tol']
+            iter = request.form['iter']
+            e = request.form['e']
+        else:
+            delta = request.form['delta']
+            return incremental_search.method(fx,delta,xi)
+
         if(method == 'bisection'):
             xf = request.form['xf']
             r = bisection.method(fx,xi,xf,tol,iter,e)
@@ -39,4 +45,4 @@ class Methods(Resource):
             return "something is wrong, please check your parameters"
         return r
 
-api.add_resource(Methods, "/api/")
+api.add_resource(RootMethods, "/api/rootmethods/")
