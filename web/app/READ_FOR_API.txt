@@ -1,0 +1,17 @@
+*********FOR INTERPOLATION METHODS**********
+You need to send an array of the x's points and the y's points
+in different request variables. And also you need to send the 
+value you need to evaluate by interpoling.
+
+For example, a request would be:
+
+xs: [1,2,3,4],
+ys: [7,8,9,10],
+value: 2.5
+method: 'lagrange' or 'neville' or 'newton' ===> LOWERCASE
+
+The response will be simply a message with the value interpolated
+and, in newton and lagrande, the interpolating polynomial.
+All togther in a string.
+
+********************************************
