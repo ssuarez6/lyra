@@ -1,8 +1,8 @@
 from flask_restful import Resource, request
 from app import api
 from methods import bisection, regula_falsi, fixed_point, \
-    multiple_root, newton, secant, incremental_search, lag_int, newton_int,
-		nev_int 
+    multiple_root, newton, secant, incremental_search, lagrange, newton_interpolation, \
+		neville
 
 
 class RootMethods(Resource):
@@ -62,10 +62,17 @@ class Interpolation(Resource):
 		else:
 			msg = "The method specified is not supported"
 			error = True
-		return{
-			"message": msg,
-			"error?": if msg=="" or error True else False
-		}
+		
+		if error or msg=="":
+			return{
+				'message': msg,
+				'error?': True
+			}	
+		else:
+			return{
+				'message': msg,
+				'error?': False
+			}
 
 	
 api.add_resource(Interpolation, "/api/interpolation/")
