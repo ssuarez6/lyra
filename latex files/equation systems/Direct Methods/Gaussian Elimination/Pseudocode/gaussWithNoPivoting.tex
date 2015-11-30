@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[]{algpseudocode}
+\usepackage[utf8]{inputenc}
+\title{Gauss no pivoting}
+\author{Andrés Mateo Otálvaro, Santiago Suárez Pérez,Daniel Ermilson Velásquez}
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+\begin{document}
+\maketitle
+\begin{algorithm}
+\caption{Newton}\label{numerical methods}
+\begin{algorithmic}[1]
+\Procedure{Gauss no pivoting}{}
+ \For{k=1,...,n-1}
+  \State PIVOTING: Skip
+  \State ELIMINATION
+  \If{($a_kk\neq0$)}
+    \For{i=k+1,...,n}
+      \State $a_ik <- l_ik = \frac{a_ik}{a_kk}$
+
+     \EndFor
+      \For{i=k+1,...,n}
+        \For{j=k+1,...,n}
+        \State $a_ij <- a_ij - l_ik a_kj$
+        \EndFor
+       \EndFor 
+  \Else
+   \State Stop, algorith failks when $a_kk=0$
+  \EndIf 
+  \EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\end{document}
